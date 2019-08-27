@@ -135,4 +135,6 @@ client.on('message', async (message) => {
 
 client.login(process.env.TOKEN);
 
-require('express')().listen(process.env.PORT || 5000, () => console.log(`Listening on ${process.env.PORT || 5000}`));
+const app = require('express')();
+app.listen(process.env.PORT || 5000, () => console.log(`Listening on ${process.env.PORT || 5000}`))
+app.get('/', (req, res) => res.send('Debot is online!'));
