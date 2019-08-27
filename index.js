@@ -4,7 +4,7 @@ const client = new Discord.Client();
 
 client.on('ready', () => {
 	console.log(`Bot has started!`);
-	// client.user.setActivity(`Serving ${client.servers.size} servers`);
+	client.user.setActivity(`with your mom`);
 });
 
 client.on('serverCreate', (server) => {
@@ -36,11 +36,11 @@ client.on('message', async (message) => {
 		);
 	}
 
-	if (command === 'say') {
-		const sayMessage = args.join(' ');
-		message.delete().catch((O_o) => {});
-		message.channel.send(sayMessage);
-	}
+	// if (command === 'say') {
+	// 	const sayMessage = args.join(' ');
+	// 	message.delete().catch((O_o) => {});
+	// 	message.channel.send(sayMessage);
+	// }
 
 	if (command === 'kick') {
 		if (
