@@ -18,10 +18,10 @@ client.on('serverDelete', (server) => {
 client.on('message', async (message) => {
 	if (message.author.bot) return;
 
-	if (message.content.indexOf(process.env.PREFIX) !== 0) return;
+	if (message.content.indexOf('!') !== 0) return;
 
 	const args = message.content
-		.slice(process.env.PREFIX.length)
+		.slice(1)
 		.trim()
 		.split(/ +/g);
 	const command = args.shift().toLowerCase();
