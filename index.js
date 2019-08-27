@@ -135,4 +135,4 @@ client.on('message', async (message) => {
 
 client.login(process.env.TOKEN);
 
-require('http').createServer();
+require('express')().listen(process.env.PORT || 5000, () => console.log(`Listening on ${process.env.PORT || 5000}`));
