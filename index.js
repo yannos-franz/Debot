@@ -1,21 +1,21 @@
-const Discord = require('discord.js');
+let Discord = require('discord.js');
+Discord = new Discord.Client();
 
-const client = new Discord.Client();
-
-client.on('ready', () => {
+Discord.on('ready', () => {
 	console.log(`Bot has started!`);
-	client.user.setActivity(`with your mom`);
+    // Discord.user.setActivity(`on ${Discord.servers.size} servers`);
+    Discord.user.setActivity(`on 1 server`);
 });
 
-client.on('serverCreate', (server) => {
-	// client.user.setActivity(`Serving ${client.servers.size} servers`);
+Discord.on('serverCreate', (server) => {
+	// Discord.user.setActivity(`on ${Discord.servers.size} servers`);
 });
 
-client.on('serverDelete', (server) => {
-	// client.user.setActivity(`Serving ${client.servers.size} servers`);
+Discord.on('serverDelete', (server) => {
+	// Discord.user.setActivity(`on ${Discord.servers.size} servers`);
 });
 
-client.on('message', async (message) => {
+Discord.on('message', async (message) => {
 	if (message.author.bot) return;
 
 	if (message.content.indexOf('!') !== 0) return;
@@ -31,7 +31,7 @@ client.on('message', async (message) => {
 		m.edit(
 			`Pong! Latency is ${m.createdTimestamp -
 				message.createdTimestamp}ms. API Latency is ${Math.round(
-				client.ping,
+				Discord.ping,
 			)}ms`,
 		);
 	}
@@ -133,7 +133,7 @@ client.on('message', async (message) => {
 	}
 });
 
-client.login(process.env.TOKEN);
+Discord.login(process.env.TOKEN);
 
 const app = require('express')();
 app.listen(process.env.PORT || 5000, () => console.log(`Listening on ${process.env.PORT || 5000}`))
