@@ -1,4 +1,6 @@
 module.exports = (message, commands, Discord) => {
+    if (require('./../reactions/dBump')(message)) return;
+
     if (message.content.indexOf('!') !== 0) return;
 
 	if (message.author.bot) return;
