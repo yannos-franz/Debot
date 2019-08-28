@@ -28,6 +28,19 @@ module.exports = async (args, msg, Discord) => {
 	let reason = args.slice(1).join(' ');
 	if (!reason) reason = 'No reason provided';
 	msg.channel.send(
-		`${member}, you have been warned by ${msg.member} because:\n${reason}\nIf you break the rules again, you will get punished!`,
+		{
+			embed: {
+				title: 'Warning!',
+				description:
+                    `${member}, you have been warned by ${msg.member}. If you break the rules again, you will get punished!`,
+				fields: [
+					{
+						name: 'Reason',
+						value: reason,
+					},
+				],
+				timestamp: new Date(),
+			},
+		},
 	);
 };
