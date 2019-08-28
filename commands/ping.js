@@ -18,6 +18,6 @@ module.exports = async (args, msg, Discord) => {
 		`Pong! Latency is ${res.createdTimestamp -
 			msg.createdTimestamp}ms. API Latency is ${Math.round(
 			Discord.ping,
-		)}ms`,
+		)}ms.`,
 	);
 };
