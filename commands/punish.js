@@ -11,6 +11,4 @@ module.exports = async (args, msg, Discord) => {
     ) {
         return false;
     }
-
-    
 };

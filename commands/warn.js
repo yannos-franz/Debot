@@ -15,9 +15,9 @@ module.exports = async (args, msg, Discord) => {
     let member =
 		msg.mentions.members.first() || msg.server.members.get(args[0]);
 	if (!member)
-		return msg.reply('Please mention a valid member of this server');
+        return msg.reply('Please mention a valid member of this server');
     if (
-		! require('./../utils/checkRoles')(msg.mentions.members.first(), [
+		await require('./../utils/checkRoles')(msg.mentions.members.first(), [
 			'Owner',
 			'Dadmin',
 			'Moderator',
