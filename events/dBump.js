@@ -7,7 +7,7 @@ module.exports = (msg) => {
 			) {
 				let mentions = embed.description.match(/<@!?\d{17,19}>/g);
 
-				return msg.channel.send(`Thanks for the bump, ${ mentions[0] }!`);
+				return msg.channel.send(`Thanks for the bump, ${ mentions[0] }! :smile:`);
 			}
 
 			if (
@@ -18,7 +18,7 @@ module.exports = (msg) => {
 			) {
 				let mentions = embed.description.match(/<@!?\d{17,19}>/g);
 
-				return msg.channel.send(`Nice try, ${ mentions[0] }!`);
+				return msg.channel.send(`Nice try, ${ mentions[0] }! :wink:`);
 			}
 		});
 	};
