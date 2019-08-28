@@ -16,14 +16,19 @@ Discord.on('serverDelete', (server) => {
 });
 
 Discord.on('message', async (msg) => {
-    require('./utils/route')(msg, [
-        // 'ban',
-        'clear',
-        // 'kick',
-        'ping',
-        'say',
-        // 'warn',
-    ], Discord);
+    require('./utils/route')(
+		msg,
+		[
+			// 'ban',
+			'clear',
+			// 'kick',
+			'ping',
+			'punish',
+			'say',
+			'warn',
+		],
+		Discord,
+	);
 });
 
 Discord.login(process.env.TOKEN);
