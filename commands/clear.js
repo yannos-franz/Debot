@@ -1,4 +1,17 @@
 module.exports = async (args, message, Discord) => {
+    if (
+        !(await require('./../utils/permission')(
+            [
+                'Owner',
+                'Dadmin',
+                'Moderator'
+            ],
+            message,
+        ))
+    ) {
+        return false;
+    }
+
     const deleteCount = parseInt(args[0], 10);
 
     if (! deleteCount || deleteCount < 2 || deleteCount > 100)

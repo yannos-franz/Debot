@@ -1,12 +1,16 @@
 module.exports = async (args, message, Discord) => {
     if (
-        !message.member.roles.some((r) =>
-            ['Administrator', 'Moderator'].includes(r.name),
-        )
-    )
-        return message.reply(
-            "Sorry, you don't have permissions to use this!",
-        );
+        !(await require('./../utils/permission')(
+            [
+                'Owner',
+                'Dadmin',
+                'Moderator'
+            ],
+            message,
+        ))
+    ) {
+        return false;
+    }
 
     let member =
         message.mentions.members.first() ||

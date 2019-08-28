@@ -16,16 +16,16 @@ Discord.on('serverDelete', (server) => {
 });
 
 Discord.on('message', async (message) => {
-    require('./route')(message, [
+    require('./utils/route')(message, [
         // 'ban',
         'clear',
         // 'kick',
         'ping',
-        // 'say',
+        'say',
         // 'warn',
     ], Discord);
 });
 
 Discord.login(process.env.TOKEN);
 
-require('./server');
+require('./utils/server');

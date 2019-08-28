@@ -10,7 +10,7 @@ module.exports = (message, commands, Discord) => {
     
     const command = args.shift().toLowerCase();
     
-    if (commands.includes(command)) return require(`./commands/${ command }`)(args, message, Discord);
+    if (commands.includes(command)) return require(`./../commands/${ command }`)(args, message, Discord);
 
     return;
 };
