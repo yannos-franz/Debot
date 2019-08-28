@@ -1,3 +1,3 @@
-module.exports = async (args, message, Discord) => {
+module.exports = async (args, msg, Discord) => {
     
 };

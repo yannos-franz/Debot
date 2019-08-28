@@ -1,4 +1,4 @@
-module.exports = async (args, message, Discord) => {
+module.exports = async (args, msg, Discord) => {
 	if (
 		!(await require('./../utils/authenticate')(
 			[
@@ -6,17 +6,17 @@ module.exports = async (args, message, Discord) => {
 				'Dadmin',
 				'Moderator'
 			],
-			message,
+			msg,
 		))
 	) {
 		return false;
 	}
 
-    const res = await message.channel.send('Ping?');
+    const res = await msg.channel.send('Ping?');
     
     res.edit(
 		`Pong! Latency is ${res.createdTimestamp -
-			message.createdTimestamp}ms. API Latency is ${Math.round(
+			msg.createdTimestamp}ms. API Latency is ${Math.round(
 			Discord.ping,
 		)}ms`,
 	);

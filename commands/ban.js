@@ -1,4 +1,4 @@
-module.exports = async (args, message, Discord) => {
+module.exports = async (args, msg, Discord) => {
     if (
         !(await require('./../utils/authenticate')(
             [
@@ -6,19 +6,19 @@ module.exports = async (args, message, Discord) => {
                 'Dadmin',
                 'Moderator'
             ],
-            message,
+            msg,
         ))
     ) {
         return false;
     }
 
-    let member = message.mentions.members.first();
+    let member = msg.mentions.members.first();
     if (!member)
-        return message.reply(
+        return msg.reply(
             'Please mention a valid member of this server',
         );
     if (!member.bannable)
-        return message.reply(
+        return msg.reply(
             'I cannot ban this user! Do they have a higher role? Do I have ban permissions?',
         );
 
@@ -28,11 +28,11 @@ module.exports = async (args, message, Discord) => {
     await member
         .ban(reason)
         .catch((err) =>
-            message.reply(
-                `Sorry ${message.author} I couldn\'t ban because of : ${err}`,
+            msg.reply(
+                `Sorry ${msg.author} I couldn\'t ban because of : ${err}`,
             ),
         );
-    message.reply(
-        `${member.user.tag} has been banned by ${message.author.tag} because: ${reason}`,
+    msg.reply(
+        `${member.user.tag} has been banned by ${msg.author.tag} because: ${reason}`,
     );
 };

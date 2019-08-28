@@ -15,8 +15,8 @@ Discord.on('serverDelete', (server) => {
 	// Discord.user.setActivity(`on ${Discord.servers.size} servers`);
 });
 
-Discord.on('message', async (message) => {
-    require('./utils/route')(message, [
+Discord.on('message', async (msg) => {
+    require('./utils/route')(msg, [
         // 'ban',
         'clear',
         // 'kick',

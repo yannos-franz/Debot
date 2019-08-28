@@ -1,18 +1,18 @@
-module.exports = (message, commands, Discord) => {
-    if (require('./../reactions/dBump')(message)) return;
+module.exports = (msg, commands, Discord) => {
+    if (require('./../events/dBump')(msg)) return;
 
-    if (message.content.indexOf('?') !== 0) return;
+    if (msg.content.indexOf('?') !== 0) return;
 
-	if (message.author.bot) return;
+	if (msg.author.bot) return;
 
-	const args = message.content
+	const args = msg.content
 		.slice(1)
 		.trim()
         .split(/ +/g);
     
     const command = args.shift().toLowerCase();
     
-    if (commands.includes(command)) return require(`./../commands/${ command }`)(args, message, Discord);
+    if (commands.includes(command)) return require(`./../commands/${ command }`)(args, msg, Discord);
 
     return;
 };

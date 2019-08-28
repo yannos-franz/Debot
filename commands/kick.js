@@ -1,4 +1,4 @@
-module.exports = async (args, message, Discord) => {
+module.exports = async (args, msg, Discord) => {
     if (
         !(await require('./../utils/authenticate')(
             [
@@ -6,21 +6,21 @@ module.exports = async (args, message, Discord) => {
                 'Dadmin',
                 'Moderator'
             ],
-            message,
+            msg,
         ))
     ) {
         return false;
     }
 
     let member =
-        message.mentions.members.first() ||
-        message.server.members.get(args[0]);
+        msg.mentions.members.first() ||
+        msg.server.members.get(args[0]);
     if (!member)
-        return message.reply(
+        return msg.reply(
             'Please mention a valid member of this server',
         );
     if (!member.kickable)
-        return message.reply(
+        return msg.reply(
             'I cannot kick this user! Do they have a higher role? Do I have kick permissions?',
         );
 
@@ -30,11 +30,11 @@ module.exports = async (args, message, Discord) => {
     await member
         .kick(reason)
         .catch((err) =>
-            message.reply(
-                `Sorry ${message.author} I couldn't kick because of : ${err}`,
+            msg.reply(
+                `Sorry ${msg.author} I couldn't kick because of : ${err}`,
             ),
         );
-    message.reply(
-        `${member.user.tag} has been kicked by ${message.author.tag} because: ${reason}`,
+    msg.reply(
+        `${member.user.tag} has been kicked by ${msg.author.tag} because: ${reason}`,
     );
 };

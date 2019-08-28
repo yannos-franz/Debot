@@ -1,4 +1,4 @@
-module.exports = async (args, message, Discord) => {
+module.exports = async (args, msg, Discord) => {
     if (
 		!(await require('./../utils/authenticate')(
             [
@@ -6,13 +6,13 @@ module.exports = async (args, message, Discord) => {
                 'Dadmin',
                 'Moderator'
             ],
-			message,
+			msg,
 		))
 	) {
 		return false;
 	}
 
     const sayMessage = args.join(' ');
-    message.delete().catch((O_o) => {});
-    message.channel.send(sayMessage);
+    msg.delete().catch((O_o) => {});
+    msg.channel.send(sayMessage);
 };

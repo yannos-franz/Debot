@@ -1,4 +1,4 @@
-module.exports = async (args, message, Discord) => {
+module.exports = async (args, msg, Discord) => {
     if (
         !(await require('./../utils/authenticate')(
             [
@@ -6,7 +6,7 @@ module.exports = async (args, message, Discord) => {
                 'Dadmin',
                 'Moderator'
             ],
-            message,
+            msg,
         ))
     ) {
         return false;
@@ -15,15 +15,15 @@ module.exports = async (args, message, Discord) => {
     const deleteCount = parseInt(args[0], 10);
 
     if (! deleteCount || deleteCount < 2 || deleteCount > 100)
-        return message.reply(
+        return msg.reply(
             'Please provide a number greater than 2 and less than 100 for the number of messages to delete',
         );
 
-    const fetched = await message.channel.fetchMessages({
+    const fetched = await msg.channel.fetchMessages({
         limit: deleteCount,
     });
 
-    message.channel
+    msg.channel
         .bulkDelete(fetched)
         .catch((err) =>
             message.reply(`Couldn't delete messages because of: ${ err }`),

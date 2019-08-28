@@ -1,4 +1,4 @@
-module.exports = async (args, message, Discord) => {
+module.exports = async (args, msg, Discord) => {
     if (
         !(await require('./../utils/authenticate')(
             [
@@ -6,7 +6,7 @@ module.exports = async (args, message, Discord) => {
                 'Dadmin',
                 'Moderator'
             ],
-            message,
+            msg,
         ))
     ) {
         return false;
