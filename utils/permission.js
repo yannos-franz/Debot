@@ -1,5 +1,5 @@
 module.exports = async (roles, message) => {
-	if (!message.member.roles.some((role) => roles.includes(role.name))) {
+	if (! require('./checkRoles')(message.member, roles)) {
 		message.reply('Sorry, you don\'t have permission to use this!');
 
 		return false;
