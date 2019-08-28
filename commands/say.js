@@ -1,6 +1,6 @@
 module.exports = async (args, message, Discord) => {
     if (
-		!(await require('./../utils/permission')(
+		!(await require('./../utils/authenticate')(
             [
                 'Owner',
                 'Dadmin',
