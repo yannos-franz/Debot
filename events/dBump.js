@@ -1,21 +1,24 @@
 module.exports = (msg) => {
 	if (msg.embeds) {
 		msg.embeds.forEach((embed) => {
-			if (embed.description.includes('Bump done') &&
-				mgb.member.bot
+			if (
+				embed.description.toLowerCase().includes('bump done') &&
+				msg.author.bot
 			) {
-				return msg.channel.send(
-					`Thanks for the bump, ${msg.mentions.members.first()}!`,
-				);
+				let mentions = embed.description.match(/<@!?\d{17,19}>/g);
+
+				return msg.channel.send(`Thanks for the bump, ${ mentions[0] }!`);
 			}
 
 			if (
-				embed.description.includes('until the server can be bumped') &&
-				mgb.member.bot
+				embed.description
+					.toLowerCase()
+					.includes('until the server can be bumped') &&
+				msg.author.bot
 			) {
-				return msg.channel.send(
-					`Nice try, ${msg.mentions.members.first()}!`,
-				);
+				let mentions = embed.description.match(/<@!?\d{17,19}>/g);
+
+				return msg.channel.send(`Nice try, ${ mentions[0] }!`);
 			}
 		});
 	};
