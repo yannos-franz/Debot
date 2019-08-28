@@ -16,7 +16,7 @@ Discord.on('serverDelete', (server) => {
 });
 
 Discord.on('message', async (message) => {
-    require('route')(message, [
+    require('./route')(message, [
         // 'ban',
         'clear',
         // 'kick',

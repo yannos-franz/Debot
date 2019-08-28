@@ -1,4 +1,4 @@
-module.exports = (args, message, Discord) => {
+module.exports = async (args, message, Discord) => {
     if (
         !message.member.roles.some((r) =>
             ['Administrator', 'Moderator'].includes(r.name),
